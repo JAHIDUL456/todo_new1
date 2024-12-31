@@ -5,7 +5,7 @@ from django.contrib import messages
 # Create your views here.
 
 def home(request):
-    return HttpResponse('this page is for landing page design')
+    return render(request,'todo.html')
 
 def register_page(request):
     if request.method=='POST':
@@ -48,3 +48,8 @@ def login_page(request):
         else:
             messages.error(request,'this user not exist,please resister')
     return render(request,'login.html')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
